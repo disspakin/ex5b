@@ -41,7 +41,8 @@
 			    if (!validateTemperature(t)) {
                   return;
               }
-			  
+			  var { t1, u1 } = convertTemperature(parseFloat(t), u);
+			  });
 			   function validateTemperature(t){
                    if(isNaN(t)){
                        alert("Please enter a valid number for temperature!");
@@ -54,24 +55,20 @@
                     }
                     return true;
                 }
-
-			   
-			   var t1;
-			   var u1;
-			   
-			   if(u == "F"){
-					t1 = t * (9/5) + 32;
-					u1 = "Fahrenheit";
-			   }else if(u == "K"){
-					t1 =  t + 273.15;
-					u1 = "Kelvin";
-			   }else if(u == "R"){
-					t1 = t * (4/5);
-                    u1 = "Réaumur";
-			   }
-			   
-			   alert("Temperature is "+t1+" in "+u1);
-			});
+			  function convertTemperature(t, u) {
+                  var t1, u1;
+                  if (u === "F") {
+                       t1 = t * (9/5) + 32;
+                       u1 = "Fahrenheit";
+                  } else if (u === "K") {
+                       t1 = t + 273.15;
+                       u1 = "Kelvin";  
+                  } else if (u === "R") {
+                       t1 = t * (4/5);
+                       u1 = "Réaumur"; 
+                  }
+                  return { t1, u1 };
+               }
 		});
 	</script>
 </body>
